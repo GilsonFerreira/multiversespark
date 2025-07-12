@@ -1,40 +1,34 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
-const path = require('path');
+const path = '/mnt/cloudflared/config.yml';
 
-// Função para ler o YAML
-function readConfig(filePath) {
+function lerConfig() {
   try {
-    const file = fs.readFileSync(filePath, 'utf8');
+    const file = fs.readFileSync(path, 'utf8');
     return yaml.load(file);
   } catch (err) {
-    throw new Error(`Erro ao ler YAML: ${err.message}`);
+    return { error: 'Erro ao ler config.yml' };
   }
 }
 
-// Função para validar e salvar
-function writeConfig(filePath, configObject) {
+function adicionarSubdominio(data) {
   try {
-    const yamlStr = yaml.dump(configObject, { noRefs: true });
-    fs.writeFileSync(filePath, yamlStr, 'utf8');
+    const file = fs.readFileSync(path, 'utf8');
+    const config = yaml.load(file);
+
+    config.ingress.push({
+      hostname: data.hostname,
+      service: data.service
+    });
+
+    // Backup
+    fs.copyFileSync(path, path + '.bak');
+
+    fs.writeFileSync(path, yaml.dump(config));
+    return { success: true };
   } catch (err) {
-    throw new Error(`Erro ao salvar YAML: ${err.message}`);
+    return { error: 'Erro ao salvar subdomínio' };
   }
 }
 
-// Função para backup automático
-function backupConfig(filePath) {
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const backupPath = path.join(path.dirname(filePath), `backup-${timestamp}.yml`);
-  try {
-    fs.copyFileSync(filePath, backupPath);
-  } catch (err) {
-    console.warn(`Falha ao criar backup: ${err.message}`);
-  }
-}
-
-module.exports = {
-  readConfig,
-  writeConfig,
-  backupConfig
-};
+module.exports = { lerConfig, adicionarSubdominio };
