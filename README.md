@@ -1,13 +1,10 @@
-# 🌐 Multiversespark - Painel de Subdomínios para Cloudflare Tunnel
+# Multiversespark V2
 
-Painel web para adicionar, remover e gerenciar subdomínios via edição automática do `config.yml` no túnel Cloudflare.  
-Feito com Node.js (Express) e Bootstrap 5.
+Painel moderno para gerenciamento de túnel e subdomínios via config.yml
 
-## 🚀 Instalação
+## 🔧 Instalação
 
 ```bash
-git clone https://github.com/seuusuario/multiversespark.git
+git clone https://github.com/GilsonFerreira/multiversespark.git
 cd multiversespark
-npm install
-cp .env.example .env
-npm start
+bash install.sh
