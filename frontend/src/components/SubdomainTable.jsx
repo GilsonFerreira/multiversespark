@@ -18,3 +18,5 @@ const SubdomainTable = () => {
     </table>
   );
 };
+
+export default SubdomainTable;
