@@ -1,10 +1,12 @@
-# Multiversespark V2
+# Multiversespark-v2
 
-Painel moderno para gerenciamento de túnel e subdomínios via config.yml
+Projeto full-stack com backend em Node.js + Express e frontend em React.
 
-## 🔧 Instalação
+## Como executar
 
+1. Instale dependências do backend:
 ```bash
-git clone https://github.com/GilsonFerreira/multiversespark.git
-cd multiversespark
-bash install.sh
+cd backend
+npm install
+cp .env.example .env
+node index.js
