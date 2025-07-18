@@ -1,12 +1,13 @@
-# multiversespark
+# 🌐 Multiversespark - Painel de Subdomínios para Cloudflare Tunnel
 
-Projeto full-stack com backend em Node.js + Express e frontend em React.
+Painel web para adicionar, remover e gerenciar subdomínios via edição automática do `config.yml` no túnel Cloudflare.  
+Feito com Node.js (Express) e Bootstrap 5.
 
-## Como executar
+## 🚀 Instalação
 
-1. Instale dependências do backend:
 ```bash
-cd backend
+git clone https://github.com/seuusuario/multiversespark.git
+cd multiversespark
 npm install
 cp .env.example .env
-node index.js
+npm start
