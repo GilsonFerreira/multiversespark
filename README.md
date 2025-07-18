@@ -1,4 +1,4 @@
-# Multiversespark-v2
+# multiversespark
 
 Projeto full-stack com backend em Node.js + Express e frontend em React.
 
